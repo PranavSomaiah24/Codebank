@@ -18,6 +18,7 @@ body {
     color: white;
     text-align: left;
     padding: 0 0 4em 1em;
+    font-weight: bold;
 }
 header {
     padding-top: 1em;
@@ -31,8 +32,12 @@ a {
 p {
     margin: 0;
 }
+#rule{
+    margin-top: 1em;
+    /* font-weight: bold; */
+}
 h1 {
-    margin: 1em 0 0.5em 0;
+    margin: 1.5em 0 1.5em 0;
     color: white;
     font-size: 2.3rem;
 }
@@ -67,6 +72,7 @@ h1 {
 
 #btnEasy {
     border-radius: 0.5em;
+    width: 40%;
     padding: 0.5em;
     outline: none;
     border: none;
@@ -74,15 +80,16 @@ h1 {
     font-size: 2.5rem;
     font-weight: bold;
     color: white;
-    margin: 0;
+    margin: 0.5em;
     /* top: 50%; */
     cursor: pointer;
     position: relative;
-    left: 40%;
+    left: 30%;
 }
 
 #btnIntermediate {
     border-radius: 0.5em;
+    width: 40%;
     padding: 0.5em;
     outline: none;
     border: none;
@@ -90,18 +97,19 @@ h1 {
     font-size: 2.5rem;
     font-weight: bold;
     color: white;
-    margin: 0;
-    top: 50%;
+    margin: 0.5em;
+    /* top: 50%; */
     /* position: absolute; */
     cursor: pointer;
     display: block;
     position: relative;
-    left: 40%;
+    left: 30%;
     /* z-index: 2; */
 }
 
 #btnExpert {
     border-radius: 0.5em;
+    width: 40%;
     padding: 0.5em;
     outline: none;
     border: none;
@@ -109,13 +117,13 @@ h1 {
     font-size: 2.5rem;
     font-weight: bold;
     color: white;
-    margin: 0;
-    top: 50%;
+    margin-top: 1em;
+    /* top: 50%; */
     /* position: absolute; */
     cursor: pointer;
     display: block;
     position: relative;
-    left: 40%;
+    left: 32%;
     /* z-index: 2; */
 } 
 
@@ -135,7 +143,7 @@ h1 {
 
 } */
 table {
- 
+    margin-top: 5%;
     z-index: 1;
     align-self: center;
     background-color:rgb(31, 3, 97);
@@ -150,7 +158,7 @@ td {
     width:60px; height:60px;
     text-align: center;
     padding: 0.5em;
-    color: blue;
+    color:white;
     font-weight: bold;
     font-size: 2.5rem;
 }
@@ -165,7 +173,8 @@ span {
 }
 
 #scoreDisplay{
-    height:2%;
+    height:10%;
+    margin-top: 1em;
 }
 #timeDisplay {
     display: none;
@@ -177,16 +186,43 @@ span {
     position: absolute;
     right: 1em;
 }
-#highscore {
-    display: none;
+#highscoreEasy {
+    /* display: none; */
     height: 4%;
+    /* width: 4%; */
     /* position: absolute; */
     /* top: 50%; */
-    font-size:2em ;
+    font-size:1em ;
     padding: 0;
     margin: 0;
     position: absolute;
-    left: 1em;
+    left: 2%;
+    color: white;
+}
+#highscoreMedium {
+    /* display: inline-block; */
+    height: 4%;
+    /* width: 4%; */
+    /* position: absolute; */
+    /* top: 50%; */
+    font-size:1em ;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 25%;
+    color: white;
+}
+#highscoreHard {
+    /* display: inline-block; */
+    height: 4%;
+    /* width: 4%; */
+    /* position: absolute; */
+    /* top: 50%; */
+    font-size:1em ;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 53%;
     color: white;
 }
 .fadeIn {
@@ -195,7 +231,22 @@ span {
 .expert-fadeIn{
     animation: fadeIn 1.5s infinite;
 }
+.heading {
+    animation: fadeIn 2s forwards;
+}
 @keyframes fadeIn {
     from{opacity: 0;}
     to{opacity: 1;}
+ }
+
+
+ @keyframes fadeIn1{
+     from{
+         opacity: 0;
+        transform: translateY(-2em);
+     }
+     to{
+         opacity: 1;
+        transform: translateY(0);
+     }
  }
