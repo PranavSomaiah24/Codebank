@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+
+
+/* body {
+    background: url('bg-main.jpg');
+    background-size: cover;
+    background-position: center;
+} */
+.top {
+    background-color: indigo;    margin: 0;
+    color: white;
+    text-align: left;
+    padding: 0 0 4em 1em;
+}
+header {
+    padding-top: 1em;
+}
+a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+p {
+    margin: 0;
+}
+h1 {
+    margin: 1em 0 0.5em 0;
+    color: white;
+    font-size: 2.3rem;
+}
+.gameContent {
+    height: 150vh;
+    /* background: url('bg-main.jpg');
+    background-size: cover;
+    background-position: center
+ */padding-left: 1%;
+ padding-right: 1%;
+    background-color: indigo; 
+}
+#tableSpace {
+    height: 90vh;
+    border: 1px solid black;
+    background-color: rgba(0,0,0,.3);
+    /* margin-top: 4em; */
+    margin-bottom: 4em;
+    /* padding: 1em; */
+    display: flex;
+  justify-content: center;
+    
+}
+
+#gameMode {
+    color: white;
+    position: absolute;
+    margin: 1em 0;
+    font-size: 2.5rem;
+    /* text-align: center; */
+}
+
+#btnEasy {
+    border-radius: 0.5em;
+    padding: 0.5em;
+    outline: none;
+    border: none;
+    background-color: purple;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    /* top: 50%; */
+    cursor: pointer;
+    position: relative;
+    left: 40%;
+}
+
+#btnIntermediate {
+    border-radius: 0.5em;
+    padding: 0.5em;
+    outline: none;
+    border: none;
+    background-color: purple;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    top: 50%;
+    /* position: absolute; */
+    cursor: pointer;
+    display: block;
+    position: relative;
+    left: 40%;
+    /* z-index: 2; */
+}
+
+#btnExpert {
+    border-radius: 0.5em;
+    padding: 0.5em;
+    outline: none;
+    border: none;
+    background-color: purple;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+    top: 50%;
+    /* position: absolute; */
+    cursor: pointer;
+    display: block;
+    position: relative;
+    left: 40%;
+    /* z-index: 2; */
+} 
+
+#btnEasy:hover, #btnIntermediate:hover, #btnExpert:hover{
+    content: " EASY - 3x3 Grid";
+    background-color: rgb(94, 0, 182);
+}
+
+/* #restart {
+    border-radius: 0.5em;
+    padding: 1em;
+    outline: none;
+    border: none;
+    background-color: purple;
+    font-weight: bold;
+    color: white;
+
+} */
+table {
+ 
+    z-index: 1;
+    align-self: center;
+    background-color:rgb(31, 3, 97);
+    border: 3px solid black;
+    border-spacing: 0.3em;
+}
+td {
+    border-radius:0.3em;
+    background-color: black;
+    border: 2px solid black;
+    cursor:pointer;
+    width:60px; height:60px;
+    text-align: center;
+    padding: 0.5em;
+    color: blue;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+td:hover {
+background-color: rgba(0,0,0,.7);
+}
+span {
+    position: absolute;
+    right: 2em;
+    font-size: 2rem;
+    color: white;
+}
+
+#scoreDisplay{
+    height:2%;
+}
+#timeDisplay {
+    display: none;
+    padding: 0;
+    margin: 0;
+    height: 2%;
+    color: white;
+    font-size: 1.5em;
+    position: absolute;
+    right: 1em;
+}
+#highscore {
+    display: none;
+    height: 4%;
+    /* position: absolute; */
+    /* top: 50%; */
+    font-size:2em ;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 1em;
+    color: white;
+}
+.fadeIn {
+    animation: fadeIn 2s forwards;
+}
+.expert-fadeIn{
+    animation: fadeIn 1.5s infinite;
+}
+@keyframes fadeIn {
+    from{opacity: 0;}
+    to{opacity: 1;}
+ }
