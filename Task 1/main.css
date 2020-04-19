@@ -128,8 +128,8 @@ h1 {
 } 
 
 #btnEasy:hover, #btnIntermediate:hover, #btnExpert:hover{
-    content: " EASY - 3x3 Grid";
-    background-color: rgb(94, 0, 182);
+    background-color: rgb(71, 0, 71);
+    box-shadow: 0 0 50px rgba(240, 46, 170, 0.7);
 }
 
 /* #restart {
@@ -209,7 +209,7 @@ span {
     padding: 0;
     margin: 0;
     position: absolute;
-    left: 25%;
+    left: 24%;
     color: white;
 }
 #highscoreHard {
@@ -250,3 +250,53 @@ span {
         transform: translateY(0);
      }
  }
+ 
+ @media (max-width: 930px){
+    #gameMode {
+        margin: 4em 0;
+        font-size: 1rem;
+        /* text-align: center; */
+    }
+    #btnEasy, #btnIntermediate, #btnExpert {
+        font-size: 1rem;
+    }
+    #timeDisplay {
+        margin: 2em 0 0 0;
+        right: 31%;
+        font-size: 1rem;
+    }
+    #highscoreEasy{
+        left: 4%;
+        font-weight: bold;
+        font-size: .5em;
+    }
+    #highscoreMedium{
+        font-weight: bold;
+        left: 32%;
+        font-size: .5em;
+    }
+    #highscoreHard{
+        font-weight: bold;
+        left: 70%;
+        font-size: .5em;
+    }
+    span {
+        margin: 3em 0 0 0;
+        right: 38%;
+    }
+    table {
+        margin-top: 25%;
+    }
+    td {
+        width:40px; height:50px;
+        padding: 0.5em;
+        font-size: 1.5rem;
+    }
+    .top{
+        padding: 0 0 1em 0;
+    }
+    .heading {
+        margin: 0 1em; 
+        text-align: center;
+    }
+}

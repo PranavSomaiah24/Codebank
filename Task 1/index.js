@@ -2,6 +2,8 @@ let lastClicked =0 ,count =0,rows1,max;
 let elapsedTime;
 let modes = ['easy','medium','hard'];
 let interval, startTime;
+let appendNumberMax, appendNumber;
+let r,b;
 
 for(let e of modes)
 if(localStorage.getItem(e) == null){
@@ -38,12 +40,17 @@ function RGB2HTML(red, green, blue)
 }
 function colourGradient(){
     let allCells = document.getElementsByTagName('td');
-    let r =110,b =100;
+    r =170,b =155;
 
-    for(let i=allCells.length -1; i>=0 ;i--){
+    for(let i=0,max=allCells.length; i<max ;i++){
         allCells[i].style.backgroundColor = RGB2HTML(r, 0, b);
-        r+=5;
-        b+=5;
+        if(rows1 == 3){
+            r-= 10;
+            b-=10;
+        }else{
+        r-=3;
+        b-=3;
+        }
     }
 }
 
@@ -52,7 +59,9 @@ function createTable(rows){
     tr,cell, k=0;
     document.getElementById('timeDisplay').style.display = 'none';
     arr = randomArray(rows);
-   rows1 =rows;
+    rows1 =rows;
+    appendNumberMax = rows*2;
+    appendNumber = (rows*rows) + 1;
     grid.id = 'myTable';
     for(let i=0;i<rows;i++)
     {
@@ -77,30 +86,37 @@ function playAudio(src) {
 function checkClick(){
    if(lastClicked == 0){
        startTimer();
-       if(rows1 ==5){
-        document.getElementById('myTable').classList.add('expert-fadeIn');
-       }
+    //    if(rows1 ==5){
+    //     document.getElementById('myTable').classList.add('expert-fadeIn');
+    //    }
    }
     if(this.innerHTML ==lastClicked+1){
        playAudio('Ding-sound-effect.mp3');
-       this.innerHTML = '';
-       this.style.backgroundColor = 'grey';
        lastClicked++;
        count++;
-   }else{
-       playAudio('Game-show-buzzer-sound-effect.mp3');
-
-   }
-   if(count == rows1*rows1){ 
+       if(count <= appendNumberMax){
+        this.innerHTML = appendNumber++;
+        this.style.backgroundColor = RGB2HTML(r, 0, b);
+        r-=5;
+        b-=5;
+       }
+       else{
+       this.innerHTML = '';
+       this.style.backgroundColor = 'grey';
+       }
+    }else {
+        playAudio('Game-show-buzzer-sound-effect.mp3');
+    }
+   if(count == rows1*rows1 + appendNumberMax){ 
        clearInterval(interval);
        checkHighScore(elapsedTime);
        document.getElementById('myTable').remove();
        document.getElementById('timer').innerHTML  = '';
        document.getElementById('timeDisplay').style.display = 'block';
        document.getElementById('timeDisplay').innerHTML = "Your time: " + ((elapsedTime / 1000).toFixed(3)).toString();
-       document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy:' +  localStorage.getItem('easy');
-       document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate:' +  localStorage.getItem('medium');
-       document.getElementById('highscoreHard').innerHTML = 'Highscore Expert:' +  localStorage.getItem('hard');
+       document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy: ' +  localStorage.getItem('easy');
+       document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate: ' +  localStorage.getItem('medium');
+       document.getElementById('highscoreHard').innerHTML = 'Highscore Expert: ' +  localStorage.getItem('hard');
        document.getElementById('gameMode').style.display = 'block';
    }
 }
@@ -154,7 +170,7 @@ let btnEasy = document.getElementById('btnEasy'),
         lastClicked = 0;
         count=0;
         createTable(4);
-        setInterval(shuffleTable, 6000);
+        // setInterval(shuffleTable, 6000);
     })
 
     btnExpert.addEventListener('click',() => {
@@ -162,24 +178,8 @@ let btnEasy = document.getElementById('btnEasy'),
         lastClicked = 0;
         count=0;
         createTable(5);
-        // document.getElementById('myTable').classList.add('expert-fadeIn');
-        setInterval(shuffleTable, 4000);
     })
 
-
-
-
-
-// btnStrt.addEventListener('click',() =>{
-//     btnStrt.style.display = 'none';
-//     createTable(3);
-// });
-
-// btn.addEventListener('click',()=>{
-    // document.getElementById('timeDisplay').style.display = 'none';
-    // document.getElementById('highscore').style.display = 'none';
-    // lastClicked = 0;
-    // count=0;
-//     createTable(4);
-//     setInterval(shuffleTable, 6000);
-// });
+    document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy: ' +  localStorage.getItem('easy');
+       document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate: ' +  localStorage.getItem('medium');
+       document.getElementById('highscoreHard').innerHTML = 'Highscore Expert: ' +  localStorage.getItem('hard');
