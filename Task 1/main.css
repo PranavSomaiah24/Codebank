@@ -128,7 +128,7 @@ h1 {
     /* z-index: 2; */
 } 
 
-#btnEasy:hover, #btnIntermediate:hover, #btnExpert:hover{
+#btnEasy:hover, #btnIntermediate:hover, #btnExpert:hover, #btnMenu:hover{
     background-color: rgb(71, 0, 71);
     box-shadow: 0 0 50px rgba(240, 46, 170, 0.7);
 }
@@ -227,12 +227,51 @@ span {
     left: 53%;
     color: white;
 }
+.highscoreTable h3{
+    position: absolute;
+    margin: 0;
+    top: 65%;
+    right: 42%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+.highscoreTable p{
+    margin: 2em;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+#scores {
+    position: absolute;
+    margin: 0;
+    top: 70%;
+    right: 45%;
+}
+ #btnMenu {
+    position: absolute;
+    top: 115%;
+    right: 45%;
+    border-radius: 0.5em;
+    padding: 0.5em 1em 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: purple;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    /* margin-top: 1em; */
+    cursor: pointer;
+    display: block;
+    /* position: relative; */
+}
+
 .fadeIn {
     animation: fadeIn 2s forwards;
 }
-.expert-fadeIn{
+/* .expert-fadeIn{
     animation: fadeIn 1.5s infinite;
-}
+} */
 .heading {
     animation: fadeIn1 2s forwards;
 }
@@ -261,6 +300,10 @@ span {
     }
     #btnEasy, #btnIntermediate, #btnExpert {
         font-size: 1rem;
+    }
+    #btnMenu {
+        font-size: 1.5rem;
+        right: 35%;
     }
     #timeDisplay {
         margin: 2em 0 0 0;
@@ -293,6 +336,15 @@ span {
         width:40px; height:50px;
         padding: 0.5em;
         font-size: 1.5rem;
+    }
+    .highscoreTable h3 {
+        font-size: 2rem;
+        top: 58%;
+        right: 20%;
+    }
+    #scores {
+        top: 63%;
+        right: 29%;
     }
     .top{
         padding: 0 0 1em 0;

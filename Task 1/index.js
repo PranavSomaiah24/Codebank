@@ -1,6 +1,7 @@
 let lastClicked =0 ,count =0,rows1,max;
 let elapsedTime;
-let modes = ['easy','medium','hard'];
+let modes = ['easy1','easy2', 'easy3','medium1','medium2', 'medium3','hard1', 'hard2', 'hard3'],
+easy = ['easy1','easy2', 'easy3'], medium = ['medium1','medium2', 'medium3'], hard = ['hard1', 'hard2', 'hard3'];
 let interval, startTime;
 let appendNumberMax, appendNumber;
 let r,b;
@@ -11,18 +12,25 @@ if(localStorage.getItem(e) == null){
 }
 
 function checkHighScore(elapsedTime){
+    let check = elapsedTime;
 if(rows1==3){
-if(elapsedTime/1000 < Number(localStorage.getItem('easy')) || Number(localStorage.getItem('easy')) == 0.000){
-    highscore = elapsedTime/1000;
-    localStorage.setItem('easy',highscore.toFixed(3));}
+    for(let e of easy){  
+        if(check/1000 < Number(localStorage.getItem(e)) || Number(localStorage.getItem(e)) == 0.000){
+            highscore = check/1000;
+            check = Number(localStorage.getItem(e))*1000;
+            localStorage.setItem(e, highscore.toFixed(3));}}
 }else if(rows1 == 4){
-    if(elapsedTime/1000 < Number(localStorage.getItem('medium')) || Number(localStorage.getItem('medium')) == 0.000){
-        highscore = elapsedTime/1000;
-        localStorage.setItem('medium',highscore.toFixed(3));}
+    for(let e of medium){
+        if(check/1000 < Number(localStorage.getItem(e)) || Number(localStorage.getItem(e)) == 0.000){
+            highscore = check/1000;
+            check = Number(localStorage.getItem(e))*1000;
+            localStorage.setItem(e,highscore.toFixed(3));}}
 }else if (rows1 == 5){
-    if(elapsedTime/1000 < Number(localStorage.getItem('hard')) || Number(localStorage.getItem('hard')) == 0.000){
-        highscore = elapsedTime/1000;
-        localStorage.setItem('hard',highscore.toFixed(3));}
+    for(let e of hard)
+    if(check/1000 < Number(localStorage.getItem(e)) || Number(localStorage.getItem(e)) == 0.000){
+        highscore = check/1000;
+        check = Number(localStorage.getItem(e))*1000;
+        localStorage.setItem(e, highscore.toFixed(3));}
 }
 }
 
@@ -83,7 +91,9 @@ function createTable(rows){
 function playAudio(src) {
     new Audio(src).play();
   }
-function checkClick(){
+
+
+  function checkClick(){
    if(lastClicked == 0){
        startTimer();
     //    if(rows1 ==5){
@@ -114,10 +124,12 @@ function checkClick(){
        document.getElementById('timer').innerHTML  = '';
        document.getElementById('timeDisplay').style.display = 'block';
        document.getElementById('timeDisplay').innerHTML = "Your time: " + ((elapsedTime / 1000).toFixed(3)).toString();
-       document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy: ' +  localStorage.getItem('easy');
-       document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate: ' +  localStorage.getItem('medium');
-       document.getElementById('highscoreHard').innerHTML = 'Highscore Expert: ' +  localStorage.getItem('hard');
-       document.getElementById('gameMode').style.display = 'block';
+       document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy: ' +  localStorage.getItem('easy1');
+       document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate: ' +  localStorage.getItem('medium1');
+       document.getElementById('highscoreHard').innerHTML = 'Highscore Expert: ' +  localStorage.getItem('hard1');
+       document.getElementById('hTable').style.display = 'block'; 
+       displayHTable(rows1);   
+       //    document.getElementById('gameMode').style.display = 'block';
    }
 }
 
@@ -128,13 +140,6 @@ function randomArray(n){
  for(let i=0;i<n*n;i++){
      arr[i] = i +1;
     }
-     
-    // for ( i = arr.length - 1; i > 0; i--) {
-    //     let j = Math.floor(Math.random() * (i + 1));
-    //     let temp = arr[i];
-    //     arr[i] = arr[j];
-    //     arr[j] = temp;
-    // }
    return arr;
 }
 
@@ -156,7 +161,8 @@ function shuffleTable(){
 
 let btnEasy = document.getElementById('btnEasy'),
     btnIntermediate = document.getElementById('btnIntermediate'),
-    btnExpert = document.getElementById('btnExpert');
+    btnExpert = document.getElementById('btnExpert'),
+    btnMenu = document.getElementById('btnMenu');
 
     btnEasy.addEventListener('click',() => {
         document.getElementById('gameMode').style.display = 'none';
@@ -180,6 +186,28 @@ let btnEasy = document.getElementById('btnEasy'),
         createTable(5);
     })
 
-    document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy: ' +  localStorage.getItem('easy');
-       document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate: ' +  localStorage.getItem('medium');
-       document.getElementById('highscoreHard').innerHTML = 'Highscore Expert: ' +  localStorage.getItem('hard');
+    btnMenu.addEventListener('click', () => {
+        document.getElementById('hTable').style.display = 'none';
+        document.getElementById('gameMode').style.display = 'block';
+    })
+    
+    function displayHTable(rows1){
+        let scores = document.getElementById('scores'),
+        score = scores.getElementsByTagName('p'), i=0;
+        // console.log(score[i].innerHTML);
+        switch(rows1){
+            case 3: for(let e of easy){
+                        score[i].innerHTML = (i+1).toString() + ' - ' + localStorage.getItem(e); i++;
+                    } break;
+            case 4: for(let e of medium){
+                        score[i].innerHTML = (i+1).toString() +' - ' + localStorage.getItem(e); i++;
+                     } break;
+            case 5: for(let e of hard){
+                        score[i].innerHTML = (i+1).toString() +' - ' + localStorage.getItem(e); i++;
+                    } break;
+        }
+    }
+    console.log( localStorage.getItem('easy1'));
+    document.getElementById('highscoreEasy').innerHTML = 'Highscore Easy: ' +  localStorage.getItem('easy1');
+    document.getElementById('highscoreMedium').innerHTML = 'Highscore Intermediate: ' +  localStorage.getItem('medium1');
+    document.getElementById('highscoreHard').innerHTML = 'Highscore Expert: ' +  localStorage.getItem('hard1');
