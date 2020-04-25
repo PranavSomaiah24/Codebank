@@ -1,20 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
 }
 
-
-
-/* body {
-    background: url('bg-main.jpg');
-    background-size: cover;
-    background-position: center;
-} */
 .top {
-    /* background-color: indigo;    margin: 0; */
     background: linear-gradient( blue, indigo 80%) ;
     color: white;
     text-align: left;
@@ -35,7 +26,6 @@ p {
 }
 #rule{
     margin-top: 1em;
-    /* font-weight: bold; */
 }
 h1 {
     margin: 1.5em 0 1.5em 0;
@@ -44,105 +34,100 @@ h1 {
 }
 .gameContent {
     height: 150vh;
-    /* background: url('bg-main.jpg');
-    background-size: cover;
-    background-position: center
- */padding-left: 1%;
- padding-right: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
     background-color: indigo; 
+   
 }
 #tableSpace {
     height: 90vh;
     border: 1px solid black;
     background-color: rgba(0,0,0,.3);
-    /* margin-top: 4em; */
     margin-bottom: 4em;
-    /* padding: 1em; */
     display: flex;
-  justify-content: center;
+    justify-content: center;
     
 }
 
 #gameMode {
     color: white;
     position: absolute;
-    margin: 1em 0;
+    margin: 1em 0 0.2em 0;
     font-size: 2.5rem;
-    /* text-align: center; */
 }
-
-#btnEasy {
+h2 {
+    margin-bottom: 0;
+}
+#btnEasy, #btnIntermediate, #btnExpert, #btnConveyor{
     border-radius: 0.5em;
-    width: 40%;
+    width: 44%;
     padding: 0.5em;
     outline: none;
     border: none;
     background-color: purple;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: white;
-    margin: 0.5em;
-    /* top: 50%; */
-    cursor: pointer;
+    cursor: pointer; 
+}
+#btnEasy {
+    margin: 1em 0.5em 0.5em 0.5em;
     position: relative;
     left: 30%;
 }
 
 #btnIntermediate {
-    border-radius: 0.5em;
-    width: 40%;
-    padding: 0.5em;
-    outline: none;
-    border: none;
-    background-color: purple;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
     margin: 0.5em;
-    /* top: 50%; */
-    /* position: absolute; */
     cursor: pointer;
     display: block;
     position: relative;
     left: 30%;
-    /* z-index: 2; */
 }
 
 #btnExpert {
-    border-radius: 0.5em;
-    width: 40%;
-    padding: 0.5em;
-    outline: none;
-    border: none;
-    background-color: purple;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: white;
     margin-top: 1em;
-    /* top: 50%; */
-    /* position: absolute; */
-    cursor: pointer;
     display: block;
     position: relative;
     left: 32%;
-    /* z-index: 2; */
 } 
+#btnConveyor{
+    margin-top: 1em;
+    display: block;
+    position: relative;
+    left: 32%;
+}
 
-#btnEasy:hover, #btnIntermediate:hover, #btnExpert:hover, #btnMenu:hover{
+#btnEasy:hover, #btnIntermediate:hover, #btnExpert:hover, #btnMenu:hover, #btnConveyor:hover{
     background-color: rgb(71, 0, 71);
     box-shadow: 0 0 50px rgba(240, 46, 170, 0.7);
 }
 
-/* #restart {
-    border-radius: 0.5em;
-    padding: 1em;
+#conveyor {
+   margin: auto;
+   padding: 0.5em;
+   width: 50%;
+   height: 70vh;
+   display: block;
+   position: relative;
+   text-align: center;
+   border: 3px solid white;
+   overflow: hidden;
+} 
+.conveyor button{
+    position: absolute;
+    border-radius:0.3em;
     outline: none;
-    border: none;
-    background-color: purple;
+    background-color: black;
+    border: 2px solid black;
+    cursor:pointer;
+    width:120px; height:120px;
+    text-align: center;
+    padding: 0.5em;
+    color:white;
     font-weight: bold;
-    color: white;
+    font-size: 2.5rem;
+}
 
-} */
 table {
     margin-top: 5%;
     z-index: 1;
@@ -189,11 +174,7 @@ span {
     right: 1em;
 }
 #highscoreEasy {
-    /* display: none; */
     height: 4%;
-    /* width: 4%; */
-    /* position: absolute; */
-    /* top: 50%; */
     font-size:1em ;
     padding: 0;
     margin: 0;
@@ -202,11 +183,7 @@ span {
     color: white;
 }
 #highscoreMedium {
-    /* display: inline-block; */
     height: 4%;
-    /* width: 4%; */
-    /* position: absolute; */
-    /* top: 50%; */
     font-size:1em ;
     padding: 0;
     margin: 0;
@@ -215,11 +192,7 @@ span {
     color: white;
 }
 #highscoreHard {
-    /* display: inline-block; */
     height: 4%;
-    /* width: 4%; */
-    /* position: absolute; */
-    /* top: 50%; */
     font-size:1em ;
     padding: 0;
     margin: 0;
@@ -260,18 +233,13 @@ span {
     font-size: 2.5rem;
     font-weight: bold;
     color: white;
-    /* margin-top: 1em; */
     cursor: pointer;
     display: block;
-    /* position: relative; */
 }
 
 .fadeIn {
     animation: fadeIn 2s forwards;
 }
-/* .expert-fadeIn{
-    animation: fadeIn 1.5s infinite;
-} */
 .heading {
     animation: fadeIn1 2s forwards;
 }
@@ -279,7 +247,6 @@ span {
     from{opacity: 0;}
     to{opacity: 1;}
  }
-
 
  @keyframes fadeIn1{
      from{
@@ -291,25 +258,34 @@ span {
         transform: translateY(0);
      }
  }
- 
  @media (max-width: 930px){
     #gameMode {
         margin: 4em 0;
         font-size: 1rem;
         /* text-align: center; */
     }
-    #btnEasy, #btnIntermediate, #btnExpert {
+    #btnEasy, #btnIntermediate, #btnExpert, #btnConveyor {
         font-size: 1rem;
     }
     #btnMenu {
         font-size: 1.5rem;
-        right: 35%;
+        top: 105%;
+        right: 38%;
+        
+    }
+    .conveyor button{
+        width:75px; height:75px;
+        font-size: 1.5rem;
     }
     #timeDisplay {
         margin: 2em 0 0 0;
         right: 31%;
         font-size: 1rem;
     }
+    #conveyor {
+        width: 90%;
+        height: 48vh;
+     } 
     #highscoreEasy{
         left: 4%;
         font-weight: bold;

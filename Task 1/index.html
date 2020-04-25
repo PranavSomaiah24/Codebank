@@ -22,8 +22,8 @@
             <span id="timer"></span>
         </div>
         <div id="tableSpace">
-            <div id="scoreDisplay">
-                <h2 id = 'timeDisplay'></h5> 
+            <div id="scoreDisplay" >
+                <h4 id = 'timeDisplay'></h4> 
                 <p id="highscoreEasy">Highscore Easy: 0.000</p>
                 <p id="highscoreMedium">Highscore Intermediate: 0.000</p>
                 <p id="highscoreHard">Highscore Expert: 0.000</p>
@@ -35,21 +35,21 @@
                     <p>2. 0.000</p>
                     <p>3. 0.000</p>
                 </div>
-                <input type="button" value="MENU" id="btnMenu" >
+                <div id="menu"><input type="button" value="MENU" id="btnMenu" ></div>
             </div>
-            <div class="gameMode" id="gameMode">
+            <div class="conveyor" id="conveyor" style="display: none;">
+                <div id="one"></div>
+                <div id="two"></div>
+                <div id="three"></div>
+                <div id="four"></div>
+            </div>
+            <div class="gameMode" id="gameMode" >
                 <h2>CHOOSE DIFFICULTY LEVEL:</h2>
                 <input type="button" value="EASY" id="btnEasy">
                 <input type="button" value="INTERMEDIATE" id="btnIntermediate">
                 <input type="button" value="EXPERT" id="btnExpert">
-            </div> 
-            <!-- <div id="scoreDisplay">
-                <h5 id = 'timeDisplay'></h5> 
-                <span id="highscoreEasy">highscoreEasy</span>
-                <span id="highscoreMedium">highscoreMedium</span>
-                <span id="highscoreHard"></span>
-            </div> -->
-           
+                <input type="button" value="CONVEYOR MODE" id="btnConveyor">
+            </div>        
         </div>
     </div>
     <script src="index.js"></script>
