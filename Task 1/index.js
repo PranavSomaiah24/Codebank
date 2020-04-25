@@ -63,16 +63,10 @@ function colourGradient(cell){
         if(rows1 == 3){
             r-= 10;
             b-=10;
-        }
-        if(rows1==0){
+        }else{
             r-=1;
             r-=1;}    
-        else{
-        r-=2;
-        b-=2;
-        }
-    }
-}
+}}
 
 function createTable(rows){
     let grid =document.createElement('table'),
@@ -80,8 +74,8 @@ function createTable(rows){
     document.getElementById('timeDisplay').style.display = 'none';
     arr = randomArray(rows);
     rows1 =rows;
-    appendNumberMax = rows*2;
-    max=rows*rows+appendNumberMax;
+    appendNumberMax = rows*rows*(rows1%3);
+    max=rows*rows+rows*rows*(rows1%3);
     appendNumber = (rows*rows) + 1;
     grid.id = 'myTable';
     for(let i=0;i<rows;i++)
@@ -96,8 +90,6 @@ function createTable(rows){
     document.getElementById("tableSpace").appendChild(grid);
     colourGradient('td');
     shuffleTable('td');
-    
-    let td =document.getElementById('myTable').classList.add('fadeIn');
 }
 
 function playAudio(src) {
@@ -115,8 +107,8 @@ function playAudio(src) {
        if(count <= appendNumberMax){
         this.innerHTML = appendNumber++;
         this.style.backgroundColor = RGB2HTML(r, 0, b);
-        r-=5;
-        b-=5;
+        r-=2;
+        b-=2;
        }
        else{
        this.innerHTML = '';
@@ -129,7 +121,7 @@ function playAudio(src) {
        clearInterval(interval);
        checkHighScore(elapsedTime);
 
-       if(max!=40){document.getElementById('myTable').remove();}
+       if(max!=60){document.getElementById('myTable').remove();}
        else{document.getElementById('conveyor').style.display='none';
        clearInterval(i1);clearInterval(i2);clearInterval(i3);clearInterval(i4);
        let element = document.getElementsByTagName("button"), index;
@@ -205,7 +197,7 @@ btnMenu.addEventListener('click', () => {
 btnConveyor.addEventListener('click', ()=>{
     document.getElementById('gameMode').style.display = 'none';
     document.getElementById('conveyor').style.display = 'block';
-    lastClicked = 0; rows1=0; appendNumber = 21; appendNumberMax = 20; max=40; count=0; j=1;
+    lastClicked = 0; rows1=0; appendNumber = 21; appendNumberMax = 40; max=60; count=0; j=1;
     createConveyor('one',0,0); createConveyor('two',-20, 25); createConveyor('three',0,50); createConveyor('four',-20,75);
     colourGradient('button');
     shuffleTable('button');
