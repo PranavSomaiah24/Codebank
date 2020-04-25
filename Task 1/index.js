@@ -209,7 +209,7 @@ btnConveyor.addEventListener('click', ()=>{
     createConveyor('one',0,0); createConveyor('two',-20, 25); createConveyor('three',0,50); createConveyor('four',-20,75);
     colourGradient('button');
     shuffleTable('button');
-    i1 =setInterval(() => {conveyorAnimation('one', -1)}, 100); i2 = setInterval(() => {conveyorAnimation('two', 1)}, 30);
+    i1 =setInterval(() => {conveyorAnimation('one', -1)}, 80); i2 = setInterval(() => {conveyorAnimation('two', 1)}, 30);
     i3 = setInterval(() => {conveyorAnimation('three', -1)}, 50); i4 = setInterval(() => {conveyorAnimation('four', 1)}, 65)
 })
 
@@ -255,7 +255,7 @@ function conveyorAnimation(row, direction){
     for(let i=0; i<6; i++){
         btns[i].style.left = (parseFloat(btns[i].style.left)+ direction).toString() + '%';
         if(direction == -1){
-        if(parseFloat(btns[i].style.left)<0 && parseFloat(btns[i].style.left)>-10){
+        if(parseFloat(btns[i].style.left)<0 && parseFloat(btns[i].style.left)>-15){
             btns[((i+5)%6)].innerHTML=btns[i].innerHTML;
             btns[((i+5)%6)].style.backgroundColor=btns[i].style.backgroundColor;
         }
@@ -263,7 +263,7 @@ function conveyorAnimation(row, direction){
             btns[i].style.left = "100%";
         }}
         else{
-            if(parseFloat(btns[i].style.left)>82 && parseFloat(btns[i].style.left)<92){
+            if(parseFloat(btns[i].style.left)>82 && parseFloat(btns[i].style.left)<98){
                 btns[((i+1)%6)].innerHTML=btns[i].innerHTML;
                 btns[((i+1)%6)].style.backgroundColor=btns[i].style.backgroundColor;
             }
