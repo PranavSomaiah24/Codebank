@@ -5,6 +5,7 @@ let worldY = 0,
 let keyPressed;
 let gameOver = true;
 let colours = ["red", "yellow", "blue", "lime"];
+let score = 0;
 
 function Player() {
   this.x = canvas.width / 2;
@@ -60,7 +61,6 @@ function Player() {
         )
           .toString(16)
           .slice(1);
-      console.log(frontHex);
       if (
         frontHex == "#ff0000" ||
         frontHex == "#ffff00" ||
@@ -316,8 +316,58 @@ function Rect() {
     this.angle += 1;
   };
 }
-
+function CoinSprite() {
+  this.x = canvas.width / 2;
+  this.y = 0;
+  this.enter = false;
+  this.collected = false;
+  this.size = 32;
+  this.frame = 0;
+  this.frameCount = 0;
+  this.img = new Image();
+  this.img.src = "coin_gold.png";
+  this.draw = function () {
+    ctx.save();
+    ctx.translate(this.x - 17, this.y + worldY);
+    ctx.drawImage(
+      this.img,
+      this.frame * this.size,
+      0,
+      this.size,
+      this.size,
+      0,
+      0,
+      40,
+      40
+    );
+    ctx.restore();
+    if (this.y + worldY + 20 > player.y && this.collected == false) {
+      this.size = 0;
+      this.collected = true;
+      score++;
+    }
+    this.frameCount++;
+    if (this.frameCount >= 3) {
+      if (this.frame > 7) {
+        this.frame = 0;
+      } else {
+        this.frame++;
+      }
+      this.frameCount = 0;
+    }
+  };
+}
+function drawScore() {
+  ctx.save();
+  ctx.translate(5, 25);
+  ctx.font = "bold 20px Arial";
+  ctx.fillStyle = "white";
+  ctx.beginPath();
+  ctx.fillText("SCORE: " + score.toString(), 0, 0);
+  ctx.restore();
+}
 let obstacles = [],
+  obstacleCount = 0,
   yStrt = 0,
   instruction = new InstructionText();
 
@@ -338,7 +388,12 @@ function addObs() {
       obs = new Circle3();
       break;
   }
+  if (obstacleCount > 4) {
+    obs = new CoinSprite();
+    obstacleCount = 0;
+  }
   obstacles.push(obs);
+  obstacleCount++;
   yStrt -= 300;
   obstacles[obstacles.length - 1].y = yStrt;
 }
@@ -353,6 +408,7 @@ function gameRestart() {
   player.x = canvas.width / 2;
   worldY = 0;
   yStrt = 0;
+  score = 0;
   addObs();
 }
 function animate() {
@@ -362,7 +418,6 @@ function animate() {
     if (obstacles[i].y + worldY > 0 && obstacles[i].enter == false) {
       obstacles[i].enter = true;
       addObs();
-      // console.log(obstacles);
     }
     if (obstacles[i].y + worldY > canvas.height + 150) {
       obstacles.splice(i, 1);
@@ -373,6 +428,7 @@ function animate() {
 
   player.draw();
   instruction.draw();
+  drawScore();
 
   if (player.alive == false) {
     ctx.save();
