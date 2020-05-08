@@ -31,36 +31,58 @@ function Player() {
         keyPressed = "";
       }
       this.rgb = ctx.getImageData(this.x, this.y, 1, 1).data; //rgb value of player
+      playerHex =
+        "#" +
+        ((1 << 24) + (this.rgb[0] << 16) + (this.rgb[1] << 8) + this.rgb[2])
+          .toString(16)
+          .slice(1);
       rgbCheckFront = ctx.getImageData(this.x, this.y - this.radius - 2, 1, 1)
         .data; //to check collision for top of circle
+      frontHex =
+        "#" +
+        (
+          (1 << 24) +
+          (rgbCheckFront[0] << 16) +
+          (rgbCheckFront[1] << 8) +
+          rgbCheckFront[2]
+        )
+          .toString(16)
+          .slice(1);
       rgbCheckBack = ctx.getImageData(this.x, this.y + this.radius + 2, 1, 1)
         .data; //check for bottom of player collision
-      for (i = 0; i < 3; i++) {
-        if (
-          (this.rgb[i] != rgbCheckFront[i] &&
-            this.rgb[i] == 0 &&
-            this.colour != "yellow") ||
-          (this.colour == "yellow" &&
-            this.rgb[i] != rgbCheckFront[i] &&
-            this.rgb[i] == 0)
-        ) {
+      backHex =
+        "#" +
+        (
+          (1 << 24) +
+          (rgbCheckBack[0] << 16) +
+          (rgbCheckBack[1] << 8) +
+          rgbCheckBack[2]
+        )
+          .toString(16)
+          .slice(1);
+      console.log(frontHex);
+      if (
+        frontHex == "#ff0000" ||
+        frontHex == "#ffff00" ||
+        frontHex == "#0000ff" ||
+        frontHex == "#00ff00"
+      ) {
+        if (playerHex != frontHex) {
           this.alive = false;
           this.vy = -4;
           this.vx = -2;
-          break;
         }
-        if (
-          (this.rgb[i] != rgbCheckBack[i] &&
-            this.rgb[i] == 0 &&
-            this.colour != "yellow") ||
-          (this.colour == "yellow" &&
-            this.rgb[i] != rgbCheckBack[i] &&
-            this.rgb[i] == 0)
-        ) {
+      }
+      if (
+        backHex == "#ff0000" ||
+        backHex == "#ffff00" ||
+        backHex == "#0000ff" ||
+        backHex == "#00ff00"
+      ) {
+        if (playerHex != backHex) {
           this.alive = false;
           this.vy = -4;
           this.vx = -2;
-          break;
         }
       }
     }
@@ -340,11 +362,11 @@ function animate() {
     if (obstacles[i].y + worldY > 0 && obstacles[i].enter == false) {
       obstacles[i].enter = true;
       addObs();
-      console.log(obstacles);
+      // console.log(obstacles);
     }
     if (obstacles[i].y + worldY > canvas.height + 150) {
       obstacles.splice(i, 1);
-      console.log(obstacles);
+      // console.log(obstacles);
     }
     obstacles[i].draw();
   }
@@ -361,7 +383,6 @@ function animate() {
     ctx.beginPath();
     ctx.fillText("GAME OVER-SPACE to Restart.", 0, 0);
     ctx.restore();
-    console.log("hi");
     if (keyPressed == "Space" && player.y > canvas.height - 50) {
       gameRestart();
     }
@@ -375,13 +396,3 @@ function keyHandle(e) {
 
 animate();
 window.addEventListener("keypress", keyHandle);
-// let click = canvas.addEventListener("click", function (event) {
-//   obj1.y += 20;
-//   // let rect = canvas.getBoundingClientRect();
-//   // let x = event.clientX - rect.left;
-//   // let y = event.clientY - rect.top;
-//   // console.log(y);
-//   // if (y >= obj1.y + obj1.radius && y <= obj1.y + obj1.radius + 10) {
-//   //   alert("clicked");
-//   // }
-// });
